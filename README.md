@@ -6,8 +6,8 @@
 Lab 08 builds on the Lab 07 ten-screen mobile menu project and extends it into a playable game flow:
 launch -> menus -> loading -> gameplay -> pause/settings -> results -> retry/menu.
 
-- **Demo video:** [VIDEO LINK]
-- **Windows build:** [BUILD LINK] (extract the whole ZIP, then run the .exe)
+- **Demo video:** https://drive.google.com/file/d/1-fISyob-bpLqHmP-TZkaGzRbs18yIoa2/view?usp=sharing
+- **Windows build:** https://drive.google.com/file/d/1Yd7ixDWFj2HXPsXIJGDKXyKOsZwRqQbS/view?usp=sharing (extract the whole ZIP, then run the .exe)
 
 ## Unity Version
 6000.3.24f1 (Unity 6.3 LTS)
