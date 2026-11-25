@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MissionController : MonoBehaviour
 {
     [Header("Controllers")]
+    [SerializeField] SceneLoader sceneLoader;
     [SerializeField] UIManager uiManager;
     [SerializeField] ChapterSelectController chapters;
     [SerializeField] LoadoutController loadout;
@@ -65,8 +66,15 @@ public class MissionController : MonoBehaviour
             return;
 
         chapter = chapters.SelectedChapter;
-        ResetAttempt();
-        uiManager.OpenScreen(missionScreen);
+
+        GameSession.ChapterTitle = chapter.title;
+        GameSession.StrikeTarget = chapter.strikeTarget;
+        GameSession.TimeLimit = chapter.timeLimit;
+        GameSession.Reward = chapter.reward;
+        GameSession.WeaponName = loadout.EquippedWeaponName;
+        GameSession.StrikeCooldown = loadout.StrikeCooldown;
+
+        sceneLoader.LoadScene("Gameplay");
     }
 
     void ResetAttempt()

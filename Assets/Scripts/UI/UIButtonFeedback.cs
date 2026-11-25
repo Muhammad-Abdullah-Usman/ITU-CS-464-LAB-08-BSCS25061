@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Button))]
 public class UIButtonFeedback : MonoBehaviour,
-    IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
+    IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     Button button;
     Vector3 restingScale;
@@ -18,6 +18,7 @@ public class UIButtonFeedback : MonoBehaviour,
     {
         button = GetComponent<Button>();
         restingScale = transform.localScale;
+        button.onClick.AddListener(PlayClick);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -58,5 +59,18 @@ public class UIButtonFeedback : MonoBehaviour,
 
         scaleTween = null;
         transform.localScale = restingScale;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (button.IsInteractable() && UIAudio.Instance != null)
+            UIAudio.Instance.Hover();
+    }
+
+    void PlayClick()
+    {
+        // Back buttons get their own sound from UIManager.Back()
+        if (UIAudio.Instance != null && gameObject.name != "BackButton")
+            UIAudio.Instance.Click();
     }
 }

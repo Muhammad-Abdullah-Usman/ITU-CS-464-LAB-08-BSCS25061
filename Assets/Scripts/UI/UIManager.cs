@@ -77,7 +77,10 @@ public class UIManager : MonoBehaviour
     {
         GameObject previous = currentScreen;
         if (Navigate(screen, 1) && previous != null)
+        {
             history.Push(previous);
+            if (UIAudio.Instance != null) UIAudio.Instance.Open();
+        }
     }
 
     public void Back()
@@ -87,7 +90,10 @@ public class UIManager : MonoBehaviour
 
         GameObject previous = history.Peek();
         if (Navigate(previous, -1))
+        {
             history.Pop();
+            if (UIAudio.Instance != null) UIAudio.Instance.Back();
+        }
     }
 
     bool RegisterScreen(GameObject screen)

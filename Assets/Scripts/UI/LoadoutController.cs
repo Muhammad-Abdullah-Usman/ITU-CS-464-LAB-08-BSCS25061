@@ -85,17 +85,22 @@ public class LoadoutController : MonoBehaviour
 
         EquippedWeaponIndex = selectedWeapon;
         SaveAndRefresh();
+        UIAudio.Instance.Success();
     }
 
     public void BuyFocusUpgrade()
     {
         if (FocusLevel >= MaxFocusLevel || Coins < UpgradeCost)
+        {
+            UIAudio.Instance.Error();
             return;
+        }
 
         Coins -= UpgradeCost;
         FocusLevel++;
         SaveAndRefresh();
         PulseBalance();
+        UIAudio.Instance.Success();
     }
 
     // The mission controller will call this after a successful mission.
